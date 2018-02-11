@@ -1,0 +1,90 @@
+/********************************************************************
+	ZYPOP - HTTPS://ZYPOPWEBTEMPLATES.COM
+	FREE WEB TEMPLATES
+********************************************************************/
+
+
+/**
+This file contains the CSS variables for this template, built on the Bootstrap framework 
+See https://getbootstrap.com/docs/4.0/getting-started/introduction/ for more information
+**/
+
+
+/**
+Font properties
+**/
+$font-family-base: 'Open Sans', Arial, 'sans-serif';
+$line-height-base: 1.9 !default;
+
+/**
+Main colours
+**/
+$primary:       #222 !default;
+$secondary:     #990000 !default;
+$body-color:    #666 !default; 
+
+
+// Slider box shadow
+$header-text-shadow: 5px 5px 0px #000;
+
+
+/**
+Change a few bootstrap defaults
+**/
+
+// The below variables are automatic based on the above values, however you may wish to override them
+$pagination-bg: lighten($primary, 5%);
+$pagination-border-color: lighten($primary, 10%);
+$pagination-hover-bg:  lighten($primary, 15%);
+$pagination-hover-border-color:  lighten($primary, 15%);
+
+$table-border-color: lighten($primary, 15%);
+
+$nav-tabs-border-color: lighten($primary, 15%);
+$nav-tabs-link-hover-border-color:  transparent;
+$nav-tabs-link-active-color:  lighten($body-color, 50%);
+$nav-tabs-link-active-bg:  $body-color;
+$nav-tabs-link-active-border-color: $body-color;
+$nav-link-disabled-color: darken($body-color, 10%);
+
+$grid-gutter-width: 50px;    
+
+$list-group-item-padding-x: 1.0rem;
+$list-group-item-padding-y: 0.5rem;
+
+$navbar-dark-toggler-border-color: rgba(#fff, .8);
+$navbar-dark-color: rgba(#fff, .8);
+
+$component-active-bg: $secondary !default;
+$pagination-active-bg:  $secondary !default;
+$pagination-active-border-color: $secondary !default;
+
+/**
+Carousel settings
+**/
+$carousel-control-width: 2% !default;
+$carousel-control-color: $secondary !default;
+$carousel-control-opacity: 1;
+$carousel-control-icon-width: 80px;
+
+/**
+Set the max container widths
+**/
+$container-max-widths: (
+  sm: 740px,
+  md: 920px,
+  lg: 1060px,
+  xl: 1280px
+) !default;
+
+
+
+
+/** 
+Uncomment to remove all rounded corners
+or change rounded corners from Bootstrap default values
+**/
+
+$border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;

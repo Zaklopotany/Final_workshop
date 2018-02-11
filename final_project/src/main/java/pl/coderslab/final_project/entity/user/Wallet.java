@@ -1,4 +1,4 @@
-package pl.coderslab.final_project.entity;
+package pl.coderslab.final_project.entity.user;
 
 import java.math.BigDecimal;
 
