@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import pl.coderslab.final_project.entity.bet.Bet;
 import pl.coderslab.final_project.entity.bet.UserBet;
 
 public interface UserBetRepository extends JpaRepository<UserBet,Long>{
@@ -17,4 +18,7 @@ public interface UserBetRepository extends JpaRepository<UserBet,Long>{
 
 	@Query(value="select * from user_bet where active =:active and user_id =:userId and finished =:finished",nativeQuery=true)
 	List<UserBet> getUserBets(@Param("userId") Long userId,@Param("active") boolean active,@Param("finished") boolean finished);
+	
+	List<UserBet> findAllByBetAndActive(Bet bet, boolean active);
+	
 }

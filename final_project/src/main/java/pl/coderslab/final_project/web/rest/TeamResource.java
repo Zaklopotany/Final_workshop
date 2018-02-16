@@ -17,7 +17,7 @@ import pl.coderslab.final_project.repository.TeamRepository;
 import pl.coderslab.final_project.web.rest.dto.TeamDTO;
 
 @RestController
-@RequestMapping(value = "/api/team", method = {RequestMethod.GET, RequestMethod.POST})
+@RequestMapping(value = "/api/team")
 public class TeamResource {
 
 	private TeamRepository teamRepository;

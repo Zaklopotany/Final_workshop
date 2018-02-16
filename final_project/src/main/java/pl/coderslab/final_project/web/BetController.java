@@ -65,7 +65,7 @@ public class BetController {
 		}
 		return betsMap;
 	}
-
+	
 	public String generateBackURL(Long betId) {
 		Bet tempBet = betRepo.findOne(betId);
 		StringBuffer buf = new StringBuffer();
@@ -105,7 +105,10 @@ public class BetController {
 	public String putIntoBasket(@PathVariable("betId") Long betId, Model model) throws Exception {
 		CurrentUser user = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		// add bet to basket
-		userBetService.addBetToUserBasket(user.getUserId(), betId);
+		try {
+			userBetService.addBetToUserBasket(user.getUserId(), betId);
+		} catch (Exception e) {}
+		
 		return "redirect:/bets" + generateBackURL(betId);
 	}
 

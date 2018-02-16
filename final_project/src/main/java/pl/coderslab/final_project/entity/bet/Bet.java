@@ -9,7 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Digits;
 
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Setter;
 import pl.coderslab.final_project.entity.team.Match;
 
 @Entity
@@ -25,14 +27,33 @@ public class Bet {
 	@ManyToOne
 	private BetSubCategory betSubCategory;
 
+	@Setter(AccessLevel.NONE)
 	@Digits(fraction = 2, integer = 12)
 	private double rate; // rate of the bet, has to be > 1
 
 	private Timestamp created;
-	private boolean groupAvailable = true; // true - groups can bet on this bet
+//	private boolean groupAvailable = true; // true - groups can bet on this bet
+	@Setter(AccessLevel.NONE)
 	private boolean active = true; // 1 - bet active user can bid
-	private boolean finished = false; // false game is still running or waitting for somenthing, true game has finished and users bets were checked
+	@Setter(AccessLevel.NONE)
+	private boolean finished = false; // false game is still running or waiting for something, true game has finished and users bets were checked
+	private boolean resolved = false; // bet awaits to be resolved
 	 
+	
+	public Bet setActive(boolean active) {
+		this.active=active;
+		return this;
+	}
+	
+	public Bet setRate(double rate) {
+		this.rate = rate;
+		return this;
+	}
+	
+	public Bet setFinished(boolean finished) {
+		this.finished = finished;
+		return this;
+	}
 	
 	@Override
 	public String toString() {

@@ -35,10 +35,11 @@ public class UserBetServiceImpl implements UserBetService {
 		@Autowired
 		private WallethistoryRepository walletHistoryRepo;
 		
+		private static final double MIN_BET_VALUE= 3.0;
 	//TODO make custom Exceptions
 		
 		/**
-		 * This method add creates new inactive {@link UserBet}
+		 * This method  creates new inactive {@link UserBet}
 		 * First, validate if the main {@link Bet}  is active and 
 		 * create new UserBet object, gets newest {@link BetHistory}
 		 * 
@@ -98,7 +99,7 @@ public class UserBetServiceImpl implements UserBetService {
 		}
 		//check wallet
 		Wallet userWallet = walletRepo.findOneByOwnerId(user.getUserId());		
-		if (userWallet.getAccState() < cash) {
+		if (userWallet.getAccState() < cash || cash < MIN_BET_VALUE) {
 			return false;
 		} else {
 			WalletHistory walletHistory = new WalletHistory();
@@ -149,6 +150,8 @@ public class UserBetServiceImpl implements UserBetService {
 	 * 
 	 * @return boolean true or throws exception
 	 */
+	
+	
 	
 	//TODO make custom Exceptions
 	@Override

@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import pl.coderslab.final_project.entity.bet.Bet;
+import pl.coderslab.final_project.entity.team.Match;
 
 public interface BetRepository extends JpaRepository<Bet,Long>{
 	//TODO refactor
@@ -17,4 +18,7 @@ public interface BetRepository extends JpaRepository<Bet,Long>{
 			"b.bet_category_id =:betCat " + 
 			"order by b.bet_sub_category_id asc",nativeQuery=true)
 	List<Bet> getBetByMach(@Param("match") Long match, @Param("betCat") Long betCat);
+	
+	List<Bet> findAllByMatchAndActive(Match match, boolean active);
+	List<Bet> findAllByMatch(Match match);
 }

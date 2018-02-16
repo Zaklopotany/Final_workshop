@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import pl.coderslab.final_project.repository.MatchRepository;
@@ -20,7 +21,7 @@ public class MatchResource {
 		this.matchRepository = matchRepository; 
 	}
 	
-	@RequestMapping("/active/{sportId}/{countryId}/{leagueId}")
+	@RequestMapping(path="/active/{sportId}/{countryId}/{leagueId}", method=RequestMethod.GET)
 	public List<MatchDTO> getMatchesYouCanBetOn(@PathVariable Long sportId, @PathVariable Long countryId, @PathVariable Long leagueId){
 		return matchRepository.getMatchesBetAvailable(countryId, leagueId, sportId).stream()
 				.map(match -> 

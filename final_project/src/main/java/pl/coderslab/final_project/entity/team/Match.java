@@ -13,12 +13,12 @@ import lombok.Data;
 /**
  * This entity holds team matches
  * 
- * boolean active indicates whether bets can be created to this match
- * boolean upComing indicates whether it is an up coming event or past false- past or currently running
+ * boolean active indicates whether bets can be created to this event
+ * boolean upComing indicates whether it is an upcoming event or past false- past or currently running
  * boolean onAir indicates whether match is currently running
  * byte betting type indicates that explicit type of bet can be created to this match
  * 0-normal bets, 1  - only live bets , 2 - live and normal bets
- * 
+ *  create new entities 
  * @author zaklopotany
  *
  */
