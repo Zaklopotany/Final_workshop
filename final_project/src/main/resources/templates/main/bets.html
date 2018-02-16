@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="user/text">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+function retrieveGuests() {
+    var url = '/bets/test';
+    
+    
+    $("#resultsBlock").load(url);
+}
+</script>
+	<section layout:fragment="basket" th:fragment="basket">
+		<div id="resultsBlock" th:fragment="mybasket" style="text-align:center">
+			<a href="/bets/basket" th:href="@{/bets/basket}" class="btn btn-large btn-success">Go to basket</a>
+			<th:block th:each="basket1: ${basket}">
+				<div
+					style="width: 100%; text-align:center; color: white; padding: 10px; font-size: 1em;">
+					<a th:text="${basket1.bet.match.team_home.name} + ' x ' + ${basket1.bet.match.team_away.name}"></a><br/>
+					<a th:text="${basket1.bet.betSubCategory.description}"></a><br>
+					<a th:text="'rate ' + ${basket1.bet.rate}"></a>
+
+
+
+				</div>
+			</th:block>
+
+		</div>
+	</section>
+	<section layout:fragment="content">
+		<div class=container>
+			<h2 style="text-align: center">Bet Categories</h2>
+			<div class="row">
+				<div class="col-sm-3" style="font-size: 2em; color: white;">
+<button id="searchButton" name="searchButton" onclick="retrieveGuests()" type="button" >Search button</button>
+					Match</div>
+				<div style="font-size: 2em; color: white;" class="col-sm-3">
+					Goals</div>
+				<div style="font-size: 2em; color: white;" class="col-sm-3">
+					Next</div>
+				<div style="font-size: 2em; color: white;" class="col-sm-3">
+					Next</div>
+			</div>
+
+			<div class="row">
+				<div class="container">
+					<h1 style="text-align: center">Bets</h1>
+					<table class="table" style="color: white; font-size: 1em">
+						<thead>
+							<tr>
+								<th>Team</th>
+								<th>1</th>
+								<th>x</th>
+								<th>2</th>
+							</tr>
+						</thead>
+						<tbody>
+							<th:block th:each="paramon: ${betsCat.keySet()}">
+								<tr>
+									<td
+										th:text="${paramon.team_home.name} + ' x ' + ${paramon.team_away.name}"></td>
+
+									<td th:each="parasol: ${betsCat.get(paramon)}"><a
+										th:href="@{/bets/basket/{id}(id=${parasol.id})}"
+										th:if="${parasol.active == true}" th:text="${parasol.rate}"></a>
+										<a th:unless="${parasol.active != false}"
+										th:text="${parasol.rate}"></a></td>
+								</tr>
+							</th:block>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

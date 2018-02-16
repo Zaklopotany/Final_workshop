@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="user/text">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */
+</style>
+</head>
+<body>
+
+	<section layout:fragment="content">
+		<h1>this section contains non active bets</h1>
+		<a th:if="${message != null}" th:text="${message}"></a>
+		<table style="width:80%">
+
+			<thead>
+				<tr>
+					<th>Match</th>
+					<th>Bet</th>
+					<th>rating</th>
+					<th>$$$</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="bask: ${basket}">
+					<td th:text="${bask.bet.match.team_home.name} + ' x ' + ${bask.bet.match.team_away.name}"></td>
+					<td th:text="${bask.bet.betSubCategory.description}"></td>
+					<td th:text="${bask.bet.rate}"></td>
+					<td>
+						<form id="myform" th:action="@{/bets/bet}" method="post">
+							<input type="number" name="cash" value="5" placeholder="$$" />
+							<input type="hidden" name="betId" th:value="${bask.id}" />
+						</form>
+					</td>
+					<td>
+						<button style="color:white"  class="button button5" form="myform" type="submit" >bet!</button>
+					</td>
+				</tr>
+			</tbody>
+
+		</table>
+	</section>
+</body>
+</html>

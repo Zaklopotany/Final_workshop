@@ -1,6 +1,7 @@
 package pl.coderslab.final_project.entity.user;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +27,7 @@ public class Invitation {
 	private String shortMsg; // short message
 	private String systemMsg; //this msg will contain an url or smth similar to redirect user (Accept decline delete etc)  
 	private byte status; // int status 1-waiting, 2-deleted, 3-rejected, 4 - accepted etc.
-	private Date created; // creation date
+	private Timestamp created; // creation date
 	private Date lastStatus;// last status change
 
 }

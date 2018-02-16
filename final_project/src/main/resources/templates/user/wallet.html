@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="user/text">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */
+</style>
+</head>
+<body>
+
+	<section layout:fragment="content">
+		<h1 style="color:white;">your wallet</h1>
+		<div>
+			<a style="color:white; font-size:1.5em">Account state: </a> <a style="color:white; font-size:1.5em" th:text="${wallet.accState}"></a>
+		</div>
+		<h1 style="color:white; "> Wallet history</h1>
+		<div th:each="wallet: ${walletHistory}">
+		<a style="color:white; font-size:1.5em" th:text="${wallet.operationName}"></a>
+		<a style="color:white; font-size:1.5em" th:text="${wallet.operationValue} + ' $'"></a><br>
+		<a style="color:white; font-size:1.5em" th:text="${wallet.created}"></a>
+		</div>
+		
+	</section>
+</body>
+</html>

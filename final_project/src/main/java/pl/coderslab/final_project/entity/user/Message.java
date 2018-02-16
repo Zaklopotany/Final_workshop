@@ -1,5 +1,6 @@
 package pl.coderslab.final_project.entity.user;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -34,7 +35,7 @@ public class Message {
 	@Column(nullable = false)
 	private String text;
 	private boolean readOrNot = false; // 0 if unread
-	private LocalDateTime created;
+	private Timestamp created;
 	private boolean isVisibleToSender = true;
 	private boolean isVisibleToUser = true;
 }

@@ -1,5 +1,6 @@
 package pl.coderslab.final_project.entity.team;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
@@ -21,5 +22,5 @@ public class MatchHistory {
 	private byte minuteOfGame;
 	private byte secondOfGame;
 	private String description;
-	private LocalDateTime created;
+	private Timestamp created;
 }

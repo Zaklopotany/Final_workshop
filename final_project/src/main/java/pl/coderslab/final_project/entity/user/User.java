@@ -38,8 +38,10 @@ public class User {
 	@Column(nullable=false, unique=true)
 	@Email
 	private String email;
+	
 	@Size(min=10)
 	private String password;
+	
 	private Date birthDate;
 	
 	@ManyToMany(fetch = FetchType.EAGER)

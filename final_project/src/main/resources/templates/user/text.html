@@ -1,7 +1,7 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
-
 <head>
 
 
@@ -19,10 +19,15 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
 </head>
 
 <body>
-
+	<div style="float: right">
+		
+			<section layout:fragment="basket"></section>
+		
+	</div>
 	<div class="container body-wrap">
 
 		<!-- Header -->
@@ -33,7 +38,7 @@
 					<!-- Left header box -->
 					<header class="col-6 text-left">
 						<h1>
-							<span>Website</span>Name
+							<span>BetYourLife</span>.com
 						</h1>
 					</header>
 
@@ -72,7 +77,7 @@
 								<span class="sr-only">(current)</span>
 						</a></li>
 
-						<li class="nav-item dropdown active"><a
+						<!-- <li class="nav-item dropdown active"><a
 							class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
 							role="button" aria-haspopup="true" aria-expanded="false">Examples
 								&amp; Pages</a>
@@ -82,23 +87,23 @@
 									Column</a> <a class="dropdown-item" href="one-column.html">One
 									column / no sidebar</a> <a class="dropdown-item active"
 									href="text.html">Text / left sidebar</a>
-							</div></li>
+							</div></li> -->
 
 
-						<li class="nav-item"><a class="nav-link" href="#">Services</a>
+						<li class="nav-item"><a class="nav-link" th:href="@{/user/subcription}">Subscription</a>
 						</li>
 
-						<li class="nav-item"><a class="nav-link" href="#">Products</a>
+						<li class="nav-item"><a class="nav-link" href="/user/wallet" th:href="@{/user/wallet}">Wallet</a>
 						</li>
 
-						<li class="nav-item"><a class="nav-link" href="#">Contact</a>
+						<li class="nav-item"><a class="nav-link" href="#">Bets</a>
 						</li>
 					</ul>
 
-					<form class="form-inline header-search-form my-2 my-lg-0">
+					<form class="form-inline header-search-form my-2 my-lg-0" th:action="@{/logout}" th:method="POST">
 						<input class="form-control mr-sm-2" type="text" size="10"
 							placeholder="Search" aria-label="Search">
-						<button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+						<button class="btn btn-primary my-2 my-sm-0" type="submit">Logout</button>
 					</form>
 				</div>
 			</div>
@@ -106,166 +111,78 @@
 
 
 		<!-- Main content area -->
-		<main class="container" style="padding:0">
-		<div class="row">
-			<!-- Sidebar -->
-			<aside class="col-md-4">
-				<div class="sidenav">
-					<div class="sidebar-box">
-						<a href="#about">About</a> <a href="#services">Services</a> <a
-							href="#clients">Clients</a> <a href="#contact">Contact</a>
-						<button class="dropdown-btn">
-							Dropdown <i class="fa fa-caret-down"></i>
-						</button>
-						<div class="dropdown-container">
-							<a href="#">Link 1</a> <a href="#">Link 2</a> <a href="#">Link
-								3</a>
+		<div class="container" style="padding: 0">
+			<div class="row">
+				<!-- Sidebar -->
+				<aside class="col-md-2">
+					<div class="sidenav">
+						<div class="sidebar-box">
+							<a href="#about">About</a> <a href="#services">Services</a> <a
+								href="#clients">Clients</a> <a href="#contact">Contact</a>
 							<button class="dropdown-btn">
-								Dropdown <i class="fa fa-caret-down"></i>
+								Sports <i class="fa fa-caret-down"></i>
 							</button>
 							<div class="dropdown-container">
-								<a href="#">Link 1</a> <a href="#">Link 2</a> <a href="#">Link
-									3</a>
-							</div>
-							<button class="dropdown-btn">
-								Dropdown <i class="fa fa-caret-down"></i>
-							</button>
-							<div class="dropdown-container">
-								<a href="#">Link 1</a> <a href="#">Link 2</a> <a href="#">Link
-									3</a>
+								<!-- <a href="#">Link 1</a> <a href="#">Link 2</a> <a href="#">Link
+									3</a> -->
 								<button class="dropdown-btn">
-									Dropdown <i class="fa fa-caret-down"></i>
+									Voleyball <i class="fa fa-caret-down"></i>
 								</button>
 								<div class="dropdown-container">
 									<a href="#">Link 1</a> <a href="#">Link 2</a> <a href="#">Link
 										3</a>
 								</div>
+								<button class="dropdown-btn">
+									Football <i class="fa fa-caret-down"></i>
+								</button>
+								<div class="dropdown-container">
+									<button class="dropdown-btn">
+										Poland <i class="fa fa-caret-down"></i>
+									</button>
+									<div class="dropdown-container">
+										<a th:href="@{/bets/soccer/1/1/1}">1st League</a> 
+										<a href="#">2nd League</a> 
+										<a href="#">3rd League</a>
+									</div>
+								</div>
 							</div>
+
+
+
+							<a href="#contact">Search</a>
 						</div>
-
-
-
-						<a href="#contact">Search</a>
 					</div>
 
+				</aside>
+
+				<script>
+					/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+					var dropdown = document
+							.getElementsByClassName("dropdown-btn");
+					var i;
+
+					for (i = 0; i < dropdown.length; i++) {
+						dropdown[i].addEventListener("click", function() {
+							this.classList.toggle("active");
+							var dropdownContent = this.nextElementSibling;
+							if (dropdownContent.style.display === "block") {
+								dropdownContent.style.display = "none";
+							} else {
+								dropdownContent.style.display = "block";
+							}
+						});
+					}
+				</script>
+
+
+
+				<!-- Main content -->
+				<div class="col-md-10">
+					<section layout:fragment="content"></section>
 				</div>
-			</aside>
 
-			<script>
-				/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-				var dropdown = document.getElementsByClassName("dropdown-btn");
-				var i;
-
-				for (i = 0; i < dropdown.length; i++) {
-					dropdown[i].addEventListener("click", function() {
-						this.classList.toggle("active");
-						var dropdownContent = this.nextElementSibling;
-						if (dropdownContent.style.display === "block") {
-							dropdownContent.style.display = "none";
-						} else {
-							dropdownContent.style.display = "block";
-						}
-					});
-				}
-			</script>
-
-
-
-			<!-- Main content -->
-			<div class="col-md-8">
-				<article>
-					<h2 class="article-title">Introduction to quest</h2>
-
-					<p class="article-meta">
-						Posted on
-						<time datetime="2017-05-14">14 May</time>
-						by <a href="#" rel="author">Joe Bloggs</a>
-					</p>
-
-					<p>
-						Welcome to quest, a free CSS3 &amp; HTML5 responsive web template
-						from <a href="https://zypopwebtemplates.com/" title="ZyPOP">ZyPOP</a>.
-						This template is completely <strong>free</strong> to use
-						permitting a link remains back to <a
-							href="https://zypopwebtemplates.com/" title="ZyPOP">http://zypopwebtemplates.com/</a>.
-					</p>
-
-					<p>Should you wish to use this template unbranded you can buy a
-						template license from our website for 8.00 GBP, this will allow
-						you remove all branding related to our site, for more information
-						about this see below.</p>
-
-					<p>This template has been tested in:</p>
-
-					<ul>
-						<li>Firefox</li>
-						<li>IE / Edge</li>
-						<li>Chrome</li>
-						<li>Safari</li>
-						<li>iOS / Android</li>
-					</ul>
-
-					<a href="#" class="btn btn-primary">Read more</a> <a href="#"
-						class="btn btn-secondary">Comments</a>
-
-				</article>
-
-				<article>
-
-					<h2 class="article-title">Buy unbranded</h2>
-					<p class="article-meta">
-						Posted on
-						<time datetime="2017-05-14">14 May</time>
-						by <a href="#" rel="author">Joe Bloggs</a>
-					</p>
-
-					<p>
-						Purchasing a template license for 8.00 GBP (at time of writing
-						around 10 USD) gives you the right to remove any branding
-						including links, logos and source tags relating to ZyPOP. As well
-						as waiving the attribution requirement, your payment will also
-						help us provide continued support for users as well as creating
-						new web templates. Find out more about how to buy at the licensing
-						page on our website which can be accessed at <a
-							href="https://zypopwebtemplates.com/licensing"
-							title="template license">https://zypopwebtemplates.com/licensing</a>
-					</p>
-
-					<h3>Lorem lipsum</h3>
-
-					<p>Morbi fermentum condimentum felis, commodo vestibulum sem
-						mattis sed. Aliquam magna ante, mollis vitae tincidunt in,
-						malesuada vitae turpis. Sed aliquam libero ut velit bibendum
-						consectetur. Quisque sagittis, est in laoreet semper, enim dui
-						consequat felis, faucibus ornare urna velit nec leo. Maecenas
-						condimentum velit vitae est lobortis fermentum. In tristique sem
-						vitae metus ornare luctus tempus nisl volutpat. Integer et est id
-						nisi tempus pharetra sagittis et libero.</p>
-
-					<a href="#" class="btn btn-primary">Read more</a> <a href="#"
-						class="btn btn-secondary">Comments</a>
-				</article>
-
-
-				<!-- Example pagination Bootstrap component -->
-				<nav>
-					<ul class="pagination">
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-								<span class="sr-only">Previous</span>
-						</a></li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item active"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-								class="sr-only">Next</span>
-						</a></li>
-					</ul>
-				</nav>
 			</div>
 		</div>
-		</main>
 
 
 		<!-- Footer -->

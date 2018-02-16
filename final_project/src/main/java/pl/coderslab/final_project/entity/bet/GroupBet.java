@@ -1,5 +1,6 @@
 package pl.coderslab.final_project.entity.bet;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Set;
@@ -26,7 +27,7 @@ public class GroupBet {
 	private Set<User> users; 
 	@ManyToMany
 	private Set<UserBet> userBets;
-	private LocalDateTime created;
-	private boolean activ; //user can bet if activ
+	private Timestamp created = new Timestamp(System.currentTimeMillis());
+	private boolean active; //user can bet if active
 	
 }

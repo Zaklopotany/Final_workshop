@@ -16,7 +16,7 @@ public class Team {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@ManyToOne
-	private SportCategory sporCategory;
+	private SportCategory sportCategory;
 	@ManyToOne 
 	private NationCategory nationCategory;
 	@ManyToOne

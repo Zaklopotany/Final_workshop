@@ -1,6 +1,6 @@
 package pl.coderslab.final_project.entity.user;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,8 +18,8 @@ public class SubscriptionContent {
 	private Long id;
 	@ManyToOne
 	private UserSubscription subscription;
-	private Date created;
-	private Date sendData;
+	private Timestamp created;
+	private Timestamp sendData;
 	private String content;
 	private boolean sent; //1 - sent 0 - waiting
 }
