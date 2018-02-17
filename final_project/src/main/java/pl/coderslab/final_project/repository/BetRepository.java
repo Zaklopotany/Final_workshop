@@ -21,4 +21,6 @@ public interface BetRepository extends JpaRepository<Bet,Long>{
 	
 	List<Bet> findAllByMatchAndActive(Match match, boolean active);
 	List<Bet> findAllByMatch(Match match);
+	
+	List<Bet> findAllByFinishedAndResolved(boolean finished, boolean resolved);
 }

@@ -23,6 +23,6 @@ public class WalletHistory {
 	private Wallet wallet;
 	@Digits(fraction=2, integer = 12)
 	private double operationValue;
-	private Timestamp created = new Timestamp(System.currentTimeMillis());;
+	private Timestamp created = new Timestamp(System.currentTimeMillis());
 	private String operationName;
 }

@@ -37,13 +37,13 @@ public class UpdateBet {
 	@Async
 	public Future<Long> updateHomeScore(Match match) {
 		long start = System.currentTimeMillis();
-		switch (match.getTeam_home().getSportCategory().getName()) {
+		switch (match.getTeamHome().getSportCategory().getName()) {
 		case "football":
 			updateFootballBetRating(match);
 			break;
 		}
 		
-		return new AsyncResult<Long>(System.currentTimeMillis() - start);
+		return new AsyncResult<>(System.currentTimeMillis() - start);
 	}
 	
 	

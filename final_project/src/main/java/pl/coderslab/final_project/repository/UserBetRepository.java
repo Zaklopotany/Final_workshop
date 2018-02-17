@@ -20,5 +20,6 @@ public interface UserBetRepository extends JpaRepository<UserBet,Long>{
 	List<UserBet> getUserBets(@Param("userId") Long userId,@Param("active") boolean active,@Param("finished") boolean finished);
 	
 	List<UserBet> findAllByBetAndActive(Bet bet, boolean active);
+	List<UserBet> findAllByBet(Bet bet);
 	
 }

@@ -1,17 +1,20 @@
 package pl.coderslab.final_project.service;
 
 import java.util.HashSet;
+
 import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
 
 import pl.coderslab.final_project.entity.user.User;
 import pl.coderslab.final_project.entity.user.UserSubscription;
 import pl.coderslab.final_project.repository.UserRepository;
 import pl.coderslab.final_project.repository.UserSubcriptionRepository;
 
+@Service
 public class UserSubscriptionServiceImpl implements UserSubscriptionService{
 	@Autowired
 	UserSubcriptionRepository userSubsRepo;

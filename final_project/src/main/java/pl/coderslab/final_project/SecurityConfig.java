@@ -43,14 +43,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		.antMatchers("/**").permitAll()
-		.antMatchers("/moderator").hasAnyRole("MODERATOR")
-		.antMatchers("/remove").hasAnyRole("MODERATOR", "ADMIN")
-		.antMatchers("/users").hasAnyRole("USER")
-		.antMatchers("/register").authenticated()
+		.antMatchers("/").permitAll()
+		.antMatchers("/bets/**").authenticated()
 		.and().formLogin().loginPage("/login").defaultSuccessUrl("/user/home").permitAll()
 		.and().logout().logoutSuccessUrl("/login").permitAll()
-				.and().exceptionHandling().accessDeniedPage("/403");
+				.and().exceptionHandling().accessDeniedPage("/403")
+				.and().csrf().disable();
 
 	}
 

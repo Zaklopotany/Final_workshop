@@ -3,22 +3,26 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import pl.coderslab.final_project.repository.MatchRepository;
+import pl.coderslab.final_project.service.MatchService;
 import pl.coderslab.final_project.web.rest.dto.MatchDTO;
 
 @RestController
 @RequestMapping("/api/match")
 public class MatchResource {
 	private MatchRepository matchRepository;
+	private MatchService matchService;
 	
 	@Autowired
-	MatchResource(MatchRepository matchRepository) {
+	MatchResource(MatchRepository matchRepository, MatchService matchService) {
 		this.matchRepository = matchRepository; 
+		this.matchService = matchService;
 	}
 	
 	@RequestMapping(path="/active/{sportId}/{countryId}/{leagueId}", method=RequestMethod.GET)
@@ -26,11 +30,16 @@ public class MatchResource {
 		return matchRepository.getMatchesBetAvailable(countryId, leagueId, sportId).stream()
 				.map(match -> 
 				new MatchDTO(match.getId(),
-						match.getTeam_home().getName(),
-						match.getTeam_away().getName(),
-						match.getScore_home(),
-						match.getScore_away()))
+						match.getTeamHome().getName(),
+						match.getTeamAway().getName(),
+						match.getScoreHome(),
+						match.getScoreAway()))
 				.collect(Collectors.toList());
+	}
+	
+	@GetMapping(path="/endMatch/{matchId}")
+	public void endMatch (@PathVariable Long matchId) {
+		matchService.endMatch(matchId);
 	}
 	
 }

@@ -29,16 +29,16 @@ public class Match {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	@ManyToOne
-	private Team team_home;
+	private Team teamHome;
 	@ManyToOne
-	private Team team_away;
+	private Team teamAway;
 	private int minute;
 	private boolean active = true; // true - can create bet to this event
 	private boolean upComing = true; // true upcoming event; false - past event
 	private boolean onAir = false; // true - match is currently running
 	private Timestamp date;
-	private int score_home;
-	private int score_away;
+	private int scoreHome;
+	private int scoreAway;
 	private byte betting_type; //0 - only normal, 1- only live betting, 2 - live and normal;
 		
 }

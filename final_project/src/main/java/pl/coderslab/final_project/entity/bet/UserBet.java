@@ -10,7 +10,15 @@ import javax.persistence.ManyToOne;
 
 import lombok.Data;
 import pl.coderslab.final_project.entity.user.User;
-
+/**
+ * //active :  false - bet in basket not active; after activation user cannot change;
+ * //finished : false - bet not resolved;
+ * //finished true, won true bet won. 
+ * // groupBet: false - normal bet, true - group bet
+ * 
+ * @author zaklopotany
+ *
+ */
 @Entity
 @Data
 public class UserBet {
@@ -24,10 +32,12 @@ public class UserBet {
 	@ManyToOne 
 	private BetHistory betHistory;
 	
-	private boolean active = false; // false - bet in basket not active; after activation user cannot change;
-	private boolean finished = false; // false - bet not resolved;
-	private boolean won = false; //finished true, won true bet won. 
-	private boolean groupBet = false; //false - normal bet, true - group bet
+	
+	
+	private boolean active = false; 
+	private boolean finished = false; 
+	private boolean won = false; 
+	private boolean groupBet = false; 
 	private Timestamp created = new Timestamp(System.currentTimeMillis());
 	private double money = 0.0;
 	

@@ -69,9 +69,9 @@ public class BetController {
 	public String generateBackURL(Long betId) {
 		Bet tempBet = betRepo.findOne(betId);
 		StringBuffer buf = new StringBuffer();
-		buf.append("/").append(tempBet.getMatch().getTeam_home().getSportCategory().getName()).append("/")
-				.append(tempBet.getMatch().getTeam_home().getNationCategory().getId()).append("/")
-				.append(tempBet.getMatch().getTeam_home().getLeagueCategory().getId()).append("/")
+		buf.append("/").append(tempBet.getMatch().getTeamHome().getSportCategory().getName()).append("/")
+				.append(tempBet.getMatch().getTeamHome().getNationCategory().getId()).append("/")
+				.append(tempBet.getMatch().getTeamHome().getLeagueCategory().getId()).append("/")
 				.append(tempBet.getBetCategory().getId());
 		return buf.toString();
 	}
