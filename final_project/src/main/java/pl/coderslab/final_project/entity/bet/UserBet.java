@@ -8,7 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import pl.coderslab.final_project.entity.user.User;
 /**
  * //active :  false - bet in basket not active; after activation user cannot change;
@@ -21,6 +24,9 @@ import pl.coderslab.final_project.entity.user.User;
  */
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserBet {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -33,12 +39,17 @@ public class UserBet {
 	private BetHistory betHistory;
 	
 	
-	
+	@Builder.Default
 	private boolean active = false; 
+	@Builder.Default
 	private boolean finished = false; 
+	@Builder.Default
 	private boolean won = false; 
+	@Builder.Default
 	private boolean groupBet = false; 
+	@Builder.Default
 	private Timestamp created = new Timestamp(System.currentTimeMillis());
+	@Builder.Default
 	private double money = 0.0;
 	
 	

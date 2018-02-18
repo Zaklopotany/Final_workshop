@@ -34,6 +34,7 @@ public class UpdateBet {
 	 * @param match
 	 * @return 
 	 */
+	//TODO refactor thread safe?
 	@Async
 	public Future<Long> updateHomeScore(Match match) {
 		long start = System.currentTimeMillis();
@@ -63,7 +64,7 @@ public class UpdateBet {
 					break;
 				case "Tie":
 					// no idea what should i do here ; ( let's say tie is equally probable
-					// in every scenario, p.s. i know, it isn't i have to do it quick and easy
+					// in every scenario, p.s. i know it isn't, i have to do it quick and easy
 					break;
 				case "Away win":
 					bet.setRate((bet.getRate() / 2) + (bet.getRate() * 3) / 4);

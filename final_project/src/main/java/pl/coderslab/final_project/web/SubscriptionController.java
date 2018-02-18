@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import pl.coderslab.final_project.entity.user.User;
 import pl.coderslab.final_project.entity.user.UserSubscription;
@@ -29,6 +30,7 @@ public class SubscriptionController {
 	@Autowired
 	private EmailServiceImpl emailService;
 	
+	
 	@GetMapping("/user")
 	public String getUserSubscription(Model model) {
 		List<UserSubscription> subs = new ArrayList<>();
@@ -37,13 +39,13 @@ public class SubscriptionController {
 		Set<User> hashSet = new HashSet<>();
 		hashSet.add(user);
 		model.addAttribute("list",userSubs.findByUsersIn(hashSet));
-		return "";
+		return "user/subscription";
 	}
 	
 	@GetMapping("/all")
 	public String getAllSubs(Model model) {
 		model.addAttribute("subs", userSubs.findAll());
-		return "";
+		return "/subscription/list";
 	}
 	
 //	@PostMapping("/add/{id}")
@@ -53,8 +55,10 @@ public class SubscriptionController {
 //	}
 	
 	@GetMapping("/send")
-	public void sendEmail() {
+	@ResponseBody
+	public String sendEmail() {
 		emailService.sendSimpleMessage("finalspringproject@gmail.com", "asd", "asd");
+		return "email sent";
 	}
 	
 }

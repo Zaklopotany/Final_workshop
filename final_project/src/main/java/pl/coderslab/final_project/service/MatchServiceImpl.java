@@ -17,10 +17,7 @@ public class MatchServiceImpl implements MatchService {
 	@Autowired
 	BetRepository betRepo;
 
-	/**
-	 * close an event and mark all bets as finished they will be find by scheduled
-	 * task and resolved
-	 */
+	
 	@Override
 	public void endMatch(Long matchId) {
 		Match match = matchRepo.findOne(matchId);
@@ -32,9 +29,7 @@ public class MatchServiceImpl implements MatchService {
 		betRepo.findAllByMatch(match).stream().map(bet -> bet.setFinished(true)).forEach(bet -> betRepo.save(bet));
 	}
 
-	/**
-	 * Start Match (change match status onAir - true; and close all normal bets
-	 */
+	
 	@Override
 	public void startMatch(Long matchId) {
 		Match match = matchRepo.findOne(matchId);

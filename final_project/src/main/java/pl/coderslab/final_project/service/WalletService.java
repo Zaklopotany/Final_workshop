@@ -4,7 +4,7 @@ import pl.coderslab.final_project.entity.bet.UserBet;
 
 public interface WalletService {
 
-	public void rechargeWallet(double cash);
-	public void payThePrize(UserBet userBet);
+	public void rechargeWallet(double cash) throws Exception;
+	public void payThePrize(UserBet userBet) throws Exception;
 	
 }

@@ -1,7 +1,6 @@
 package pl.coderslab.final_project.entity.user;
 
 import java.sql.Date;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -13,16 +12,21 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)

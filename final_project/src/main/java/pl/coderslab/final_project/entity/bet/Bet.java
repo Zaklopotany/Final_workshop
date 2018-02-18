@@ -10,12 +10,18 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Digits;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.coderslab.final_project.entity.team.Match;
 
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Bet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,9 +40,12 @@ public class Bet {
 	private Timestamp created;
 //	private boolean groupAvailable = true; // true - groups can bet on this bet
 	@Setter(AccessLevel.NONE)
+	@Builder.Default
 	private boolean active = true; // 1 - bet active user can bid
 	@Setter(AccessLevel.NONE)
-	private boolean finished = false; // false game is still running or waiting for something, true game has finished and users bets were checked
+	@Builder.Default
+	private boolean finished = false; // false game is still running or waiting for acceptance, true game has finished and users bets were checked
+	@Builder.Default
 	private boolean resolved = false; // bet awaits to be resolved
 	 
 	
@@ -58,9 +67,9 @@ public class Bet {
 	@Override
 	public String toString() {
 		StringBuffer buf = new StringBuffer();
-		buf.append(match.getTeam_home().getName())
+		buf.append(match.getTeamHome().getName())
 		.append(" x ")
-		.append(match.getTeam_away().getName())
+		.append(match.getTeamAway().getName())
 		.append(" - ").append(betSubCategory.getDescription());
 		return  buf.toString();
 	}

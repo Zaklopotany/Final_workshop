@@ -38,18 +38,7 @@ public class UserBetServiceImpl implements UserBetService {
 		private static final double MIN_BET_VALUE= 3.0;
 	//TODO make custom Exceptions
 		
-		/**
-		 * This method  creates new inactive {@link UserBet}
-		 * First, validate if the main {@link Bet}  is active and 
-		 * create new UserBet object, gets newest {@link BetHistory}
-		 * 
-		 * and creates UserBet object
-		 * throw and exception if bet is already in the "basket"
-		 * otherwise
-		 * save new UserBet and
-		 * @return UserBet
-		 * 
-		 */
+		
 	@Override
 	public UserBet addBetToUserBasket(Long userId, Long betId) throws Exception {
 		Bet bet = betRepo.findOne(betId);
@@ -80,16 +69,7 @@ public class UserBetServiceImpl implements UserBetService {
 	}
 
 
-	/**
-	 * This method active new bets by changing its status to active
-	 * also change {@link Wallet} state and add new record in 
-	 * {@link WalletHistory}
-	 * 
-	 * if {@link User} does not have cash on his account @return false
-	 * 
-	 * if everything is correct
-	 * @return true
-	 */
+	
 	@Override
 	public boolean validateBetAndSave(Long id, double cash) {
 		CurrentUser user = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -143,13 +123,6 @@ public class UserBetServiceImpl implements UserBetService {
 	}
 
 
-	/**
-	 * Method delete bets from {@link User} "basket" - group inactive {@link UserBet}
-	 * 
-	 * checks whether it belongs to the user and deletes it if true
-	 * 
-	 * @return boolean true or throws exception
-	 */
 	
 	
 	

@@ -24,6 +24,7 @@ public class BetServiceImpl implements BetService {
 
 	@Override
 	public Bet addNewBet(Match match, BetCategory betCategory, BetSubCategory betSubCategory) {
+		//TODO implement
 		return null;
 	}
 
@@ -37,12 +38,7 @@ public class BetServiceImpl implements BetService {
 		// TODO implement
 	}
 
-	/**
-	 * this method set {@link Bet} into inactive state Users cannot bet, it also
-	 * deletes all inactive
-	 * 
-	 * {@link UserBet} from the basket
-	 */
+	
 	@Override
 	public void closeBets(Collection<Bet> bets) {
 		bets.stream().map(bet -> bet.setActive(false)).forEach(bet -> betRepo.save(bet));

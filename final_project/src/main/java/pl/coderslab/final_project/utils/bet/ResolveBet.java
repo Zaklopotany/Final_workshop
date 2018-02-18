@@ -30,7 +30,7 @@ public class ResolveBet {
 	WalletService walletService;
 
 	@Scheduled(fixedRate = 600000)
-	public void resolveNormalBets() {
+	public void resolveNormalBets() throws Exception {
 		List<Bet> betList = betRepo.findAllByFinishedAndResolved(true, false);
 
 		for (Bet bet : betList) {
@@ -46,7 +46,7 @@ public class ResolveBet {
 	}
 
 	// TODO refactor
-	public void sortToBetCategories(UserBet userBet) {
+	public void sortToBetCategories(UserBet userBet) throws Exception {
 		switch (userBet.getBet().getBetCategory().getName()) {
 		case "match":
 			checkMatchCondition(userBet);
@@ -56,7 +56,7 @@ public class ResolveBet {
 		}
 	}
 
-	public void checkMatchCondition(UserBet userBet) {
+	public void checkMatchCondition(UserBet userBet) throws Exception {
 		int scoreHome = userBet.getBet().getMatch().getScoreHome();
 		int scoreAway = userBet.getBet().getMatch().getScoreAway();
 

@@ -25,4 +25,6 @@ public class BetResource {
 	}
 	
 	//available bets to active matches
+	
+	
 }

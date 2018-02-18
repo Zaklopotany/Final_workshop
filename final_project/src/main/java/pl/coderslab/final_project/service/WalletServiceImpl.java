@@ -19,7 +19,7 @@ public class WalletServiceImpl implements WalletService {
 	private WallethistoryRepository walletHistoryRepo;
 
 	@Override
-	public void rechargeWallet(double cash) {
+	public void rechargeWallet(double cash) throws Exception {
 		CurrentUser user = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Wallet wallet = walletRepo.findOneByOwnerId(user.getUserId());
 		WalletHistory walletHistory = new WalletHistory();
@@ -31,12 +31,12 @@ public class WalletServiceImpl implements WalletService {
 			walletHistory.setWallet(wallet);
 			walletHistoryRepo.save(walletHistory);
 		} else {
-			// throws new Exception("amount cannot be ")
+			 throw new Exception("invalid amount");
 		}
 	}
 
 	@Override
-	public void payThePrize(UserBet userBet) {
+	public void payThePrize(UserBet userBet) throws Exception {
 		WalletHistory walletHistory = new WalletHistory();
 		Wallet wallet = walletRepo.findOneByOwnerId(userBet.getUser().getId());
 		walletHistory.setOperationName("Bet won! : " + userBet.getBet().getBetCategory().getName());
@@ -48,7 +48,7 @@ public class WalletServiceImpl implements WalletService {
 			walletHistory.setWallet(wallet);
 			walletHistoryRepo.save(walletHistory);
 		} else {
-			// throws new Exception("amount cannot be ")
+			 throw new Exception("invalid amount");
 		}
 	}
 

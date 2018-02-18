@@ -34,7 +34,11 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
 		</dependency>
-
+		<!-- dataBase in memory -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
 		<!-- Swagger -->
 		<dependency>
 			<groupId>io.springfox</groupId>
