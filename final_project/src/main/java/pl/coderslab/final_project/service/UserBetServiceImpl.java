@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import lombok.AllArgsConstructor;
 import pl.coderslab.final_project.entity.bet.Bet;
 import pl.coderslab.final_project.entity.bet.BetHistory;
 import pl.coderslab.final_project.entity.bet.UserBet;
@@ -21,6 +22,7 @@ import pl.coderslab.final_project.repository.WalletRepository;
 import pl.coderslab.final_project.repository.WallethistoryRepository;
 
 @Service
+@AllArgsConstructor
 public class UserBetServiceImpl implements UserBetService {
 		@Autowired
 		private UserRepository userRepo;
@@ -36,6 +38,7 @@ public class UserBetServiceImpl implements UserBetService {
 		private WallethistoryRepository walletHistoryRepo;
 		
 		private static final double MIN_BET_VALUE= 3.0;
+		
 	//TODO make custom Exceptions
 		
 		

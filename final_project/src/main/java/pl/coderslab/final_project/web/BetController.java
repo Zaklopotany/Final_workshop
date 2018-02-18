@@ -58,10 +58,10 @@ public class BetController {
 		Map<Match, List<Bet>> betsMap = new HashMap<>();
 		List<Match> matches = new ArrayList<>();
 		// find matches where category is cat 1 and active
-		matches = matchRepo.getMatchByBetCategory(nation, sport, league, betCat);
+		matches = matchRepo.getMatchByBetCategory(sport, league, nation, betCat);
 		// loop that will load subCategory bets (view purpose)
 		for (Match match : matches) {
-			betsMap.put(match, betRepo.getBetByMach(match.getId(), 1L));
+			betsMap.put(match, betRepo.getBetByMach(match.getId(),true, 1L));
 		}
 		return betsMap;
 	}

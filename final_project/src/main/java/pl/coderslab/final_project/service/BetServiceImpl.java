@@ -1,27 +1,27 @@
 package pl.coderslab.final_project.service;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import pl.coderslab.final_project.entity.bet.Bet;
 import pl.coderslab.final_project.entity.bet.BetCategory;
 import pl.coderslab.final_project.entity.bet.BetSubCategory;
-import pl.coderslab.final_project.entity.bet.UserBet;
 import pl.coderslab.final_project.entity.team.Match;
 import pl.coderslab.final_project.repository.BetRepository;
 import pl.coderslab.final_project.repository.UserBetRepository;
 
 public class BetServiceImpl implements BetService {
 
-	@Autowired
 	private BetRepository betRepo;
-	@Autowired
 	private UserBetRepository userBetRepo;
 
+	@Autowired
+	public BetServiceImpl(BetRepository betRepo, UserBetRepository userBetRepo) {
+		this.betRepo = betRepo;
+		this.userBetRepo = userBetRepo;
+	}
+	
 	@Override
 	public Bet addNewBet(Match match, BetCategory betCategory, BetSubCategory betSubCategory) {
 		//TODO implement

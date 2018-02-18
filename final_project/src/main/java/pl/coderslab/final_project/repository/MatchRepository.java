@@ -23,13 +23,13 @@ public interface MatchRepository extends JpaRepository<Match, Long> {
 	 * @param batCat
 	 * @return list of Matches that match above parameters
 	 */
-	@Query("Select m from Bet b Join b.match m Join m.teamHome t where t.sportCategory =:sportCat "
-			+ "and t.leagueCategory =:leagueCat " + "and t.nationCategory =:nationCat " + "and b.betCategory =:betCat " + "and b.active = true") 
-	List<Match> getMatchByBetCategory(@Param("sportCat") SportCategory sportCat,
-			@Param("leagueCat") LeagueCategory leaguCat, @Param("nationCat") NationCategory nationCat, @Param("betCat") BetCategory betCat);
+	@Query("Select m from Bet b Join b.match m Join m.teamHome t where t.sportCategory.id =:sportCat "
+			+ "and t.leagueCategory.id =:leagueCat " + "and t.nationCategory.id =:nationCat " + "and b.betCategory.id =:betCat " + "and b.active = true") 
+	List<Match> getMatchByBetCategory(@Param("sportCat") Long sportCat,
+			@Param("leagueCat") Long leaguCat, @Param("nationCat") Long nationCat, @Param("betCat") Long betCat);
 
-	@Query("Select m from Match m Join m.teamHome t " + "where t.sportCategory =:sportCat "
-			+ "and t.leagueCategory =:leagueCat " + "and t.nationCategory =:nationCat " + "and m.active = true")
-	List<Match> getMatchesBetAvailable(@Param("sportCat") SportCategory sportCat,
-			@Param("leagueCat") LeagueCategory leaguCat, @Param("nationCat") NationCategory nationCat);
+	@Query("Select m from Match m Join m.teamHome t " + "where t.sportCategory.id =:sportCat "
+			+ "and t.leagueCategory.id =:leagueCat " + "and t.nationCategory.id =:nationCat " + "and m.active = true")
+	List<Match> getMatchesBetAvailable(@Param("sportCat") Long sportCat,
+			@Param("leagueCat") Long leaguCat, @Param("nationCat") Long nationCat);
 }
