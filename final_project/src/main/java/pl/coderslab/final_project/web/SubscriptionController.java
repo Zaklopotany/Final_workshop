@@ -47,13 +47,9 @@ public class SubscriptionController {
 		model.addAttribute("subs", userSubs.findAll());
 		return "/subscription/list";
 	}
+
 	
-//	@PostMapping("/add/{id}")
-//	public String addNewSub(@PathVariable("id") Long id, Model model) {
-//		model.addAttribute("subs", );
-//		return "";
-//	}
-	
+	//for test purpose only
 	@GetMapping("/send")
 	@ResponseBody
 	public String sendEmail() {

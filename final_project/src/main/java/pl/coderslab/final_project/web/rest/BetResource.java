@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
 import pl.coderslab.final_project.entity.bet.BetCategory;
 import pl.coderslab.final_project.repository.BetCategoryRepository;
 
@@ -20,6 +21,7 @@ public class BetResource {
 
 	@PostMapping("/add")
 	@ResponseStatus(value = HttpStatus.CREATED)
+	@ApiOperation(value ="Add bet Category")
 	public void addNewBetCategory(@RequestBody BetCategory betCategory ) {
 		betCategoryRepo.save(betCategory);
 	}
