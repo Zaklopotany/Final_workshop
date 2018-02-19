@@ -17,7 +17,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.coderslab.final_project.entity.team.Match;
-
+/**
+ * 
+ * @author zaklopotany
+ *
+ */
 @Entity
 @Data
 @Builder
@@ -46,7 +50,8 @@ public class Bet {
 	
 	@ApiModelProperty(notes = "Date and time when the match will start")
 	private Timestamp created;
-//	private boolean groupAvailable = true; // true - groups can bet on this bet
+	@Builder.Default
+	private boolean groupAvailable = true; // true - groups can bet on this bet
 	@Setter(AccessLevel.NONE)
 	@Builder.Default
 	@ApiModelProperty(notes = "Flag - when is true users can bid")
