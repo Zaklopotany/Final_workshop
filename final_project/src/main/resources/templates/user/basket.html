@@ -44,7 +44,7 @@
 			<tbody>
 
 				<tr th:each="bask: ${basket}">
-					<td th:text="${bask.bet.match.team_home.name} + ' x ' + ${bask.bet.match.team_away.name}"></td>
+					<td th:text="${bask.bet.match.teamHome.name} + ' x ' + ${bask.bet.match.teamAway.name}"></td>
 					<td th:text="${bask.bet.betSubCategory.description}"></td>
 					<td th:text="${bask.bet.rate}"></td>
 					<td>

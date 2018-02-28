@@ -87,7 +87,7 @@ public class BetController {
 	 * @return
 	 */
 
-	@GetMapping("/soccer/{nation}/{league}/{betCat}")
+	@GetMapping("/football/{nation}/{league}/{betCat}")
 	public String loadSoccerBets(@PathVariable("nation") Long nation, @PathVariable("league") Long league,
 			@PathVariable(value = "betCat") Long betCat, Model model) {
 		CurrentUser user = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

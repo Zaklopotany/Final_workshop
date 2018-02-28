@@ -17,7 +17,7 @@ public class MatchServiceImpl implements MatchService {
 	@Autowired
 	BetRepository betRepo;
 
-	
+	//Transcation
 	@Override
 	public void endMatch(Long matchId) {
 		Match match = matchRepo.findOne(matchId);
@@ -26,7 +26,11 @@ public class MatchServiceImpl implements MatchService {
 		match.setUpComing(false);
 		match.setActive(false);
 		matchRepo.save(match);
+		
+		
+		//TODO update statement refactor - do not download to memory
 		betRepo.findAllByMatch(match).stream().map(bet -> bet.setFinished(true)).forEach(bet -> betRepo.save(bet));
+		
 	}
 
 	
@@ -40,6 +44,7 @@ public class MatchServiceImpl implements MatchService {
 		}
 		matchRepo.save(match);
 		betRepo.findAllByMatch(match).stream().map(bet -> bet.setActive(false)).forEach(bet -> betRepo.save(bet));
+		
 	}
 
 }

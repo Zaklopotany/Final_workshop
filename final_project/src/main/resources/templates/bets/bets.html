@@ -13,7 +13,7 @@
 			<th:block th:each="basket1: ${basket}">
 				<div
 					style="width: 100%; text-align:center; color: white; padding: 10px; font-size: 1em;">
-					<a th:text="${basket1.bet.match.team_home.name} + ' x ' + ${basket1.bet.match.team_away.name}"></a><br/>
+					<a th:text="${basket1.bet.match.teamHome.name} + ' x ' + ${basket1.bet.match.teamAway.name}"></a><br/>
 					<a th:text="${basket1.bet.betSubCategory.description}"></a><br>
 					<a th:text="'rate ' + ${basket1.bet.rate}"></a>
 
@@ -54,7 +54,7 @@
 							<th:block th:each="paramon: ${betsCat.keySet()}">
 								<tr>
 									<td
-										th:text="${paramon.team_home.name} + ' x ' + ${paramon.team_away.name}"></td>
+										th:text="${paramon.teamHome.name} + ' x ' + ${paramon.teamAway.name}"></td>
 
 									<td th:each="parasol: ${betsCat.get(paramon)}"><a
 										th:href="@{/bets/basket/{id}(id=${parasol.id})}"

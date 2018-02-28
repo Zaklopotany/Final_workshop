@@ -1,5 +1,6 @@
 package pl.coderslab.final_project.RepositoryTest;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
@@ -76,6 +77,18 @@ public class BetRepositoryTest {
 		assertEquals(2, betListActive.size());
 		assertEquals(1, betListInactive.size());
 		assertEquals(1, betListActive.get(0).getBetSubCategory().getValue());
+	}
+	
+	@Test
+	public void finish_all_bets_by_matches() {
+		//give
+		entityManager.persist(Bet.builder().active(false).finished(false).match(match1).betCategory(betCat1).betSubCategory(betSubCat1).build());
+		entityManager.persist(Bet.builder().active(true).finished(false).match(match1).betCategory(betCat1).betSubCategory(betSubCat2).build());
+		entityManager.persist(Bet.builder().active(true).finished(false).match(match2).betCategory(betCat1).betSubCategory(betSubCat2).build());
+		//when
+		betRepo.updateAllBetsByMatch(match1);
+		//then
+		assertThat(betRepo.findAllByMatch(match1).iterator());
 	}
 	
 	

@@ -34,6 +34,7 @@ public class UpdateBet {
 	 * @param match
 	 * @return 
 	 */
+	
 	//TODO refactor thread safe?
 	@Async
 	public Future<Long> updateHomeScore(Match match) {
